@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [users, setUsers] = useState([]);
 
@@ -12,7 +14,7 @@ function App() {
   // Fetch all users
   const fetchUsers = () => {
     axios
-      .get("http://localhost:5000/api/users")
+      .get(`${API_URL}/api/users`)
       .then((res) => {
         setUsers(res.data.users);
       })
@@ -38,7 +40,7 @@ function App() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/users", formData)
+      .post(`${API_URL}/api/users`, formData)
       .then((res) => {
         console.log(res.data);
 
@@ -81,7 +83,7 @@ function App() {
         <br />
         <br />
 
-        <button type="submit">Save User</button>
+        <button type="submit">Save User data</button>
       </form>
 
       <hr />
