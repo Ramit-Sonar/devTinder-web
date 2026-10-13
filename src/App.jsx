@@ -1,102 +1,37 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL;
-
 function App() {
-  const [users, setUsers] = useState([]);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-
-  // Fetch all users
-  const fetchUsers = () => {
-    axios
-      .get(`${API_URL}/api/users`)
-      .then((res) => {
-        setUsers(res.data.users);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  // Handle input change
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // Handle form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post(`${API_URL}/api/users`, formData)
-      .then((res) => {
-        console.log(res.data);
-
-        setFormData({
-          name: "",
-          email: "",
-        });
-
-        fetchUsers();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
-    <div style={{ padding: "30px" }}>
-      <h1>User Form</h1>
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-
-        <br />
-        <br />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-
-        <br />
-        <br />
-
-        <button type="submit">Save User data</button>
-      </form>
-
-      <hr />
-
-      <h2>All Users</h2>
-
-      {users.map((user, index) => (
-        <div key={index}>
-          <h3>{user.name}</h3>
-          <p>{user.email}</p>
+    <>
+      <div className="navbar bg-base-300 shadow-sm">
+        <div className="flex-1">
+          <a className="btn btn-ghost text-xl">devTinder</a>
         </div>
-      ))}
-    </div>
+        <div className="flex gap-2">
+          <div className="dropdown dropdown-end mx-5">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              </div>
+            </div>
+            <ul
+              tabIndex={-1}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h1 className="text-3xl font-bold underline">Hello World</h1>
+    </>
   );
 }
 

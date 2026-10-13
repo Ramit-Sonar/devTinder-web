@@ -1,0 +1,1 @@
+-StrictMode: A React component that helps detect potential bugs during development.
