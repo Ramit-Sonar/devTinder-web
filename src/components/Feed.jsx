@@ -1,11 +1,9 @@
-
-const Feed = () => {
+const Signup = () => {
   return (
-    <div>
-      <p>Hello I am ramit</p> 
-      {console.log("working perfectly")}
+    <div style={{ paddingTop: "100px", color: "red" }}>
+      <h1>This is the feed page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Feed
+export default Signup;

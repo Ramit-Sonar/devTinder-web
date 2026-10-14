@@ -24,7 +24,7 @@ const Login = () => {
         }
       );
       dispatch(addUser(res.data.data)) //store user data in appStore
-      navigate("/");
+      navigate("/feed");
     } catch (err) {
       console.error(err);
     }
@@ -79,7 +79,7 @@ const Login = () => {
 
           <p className="text-center text-sm text-base-content/70 mt-1">
             Don't have an account?{" "}
-            <a className="link link-primary font-bold">Sign up</a>
+            <a className="link link-primary font-bold" onClick={() => navigate("/signup")}>Sign up</a>
           </p>
 
         </div>
