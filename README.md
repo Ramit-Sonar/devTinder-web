@@ -15,3 +15,4 @@
 -whenever you are making API call so pass axios => {withCredentials:true}
 -install react-redux + @riduxjs/toolkit => 
 -configureStore =>Provider => createSlice => add reducer to store 
+-Add redux devtools in chrome

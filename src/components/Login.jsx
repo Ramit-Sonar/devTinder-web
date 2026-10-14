@@ -1,10 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router";
 
 const Login = () => {
 
   const [emailId, setEmailId] = useState("ramit@gmail.com");
   const [password, setPassword] = useState("Dikshya@123");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -18,8 +23,8 @@ const Login = () => {
           withCredentials: true
         }
       );
-
-      console.log(res.data);
+      dispatch(addUser(res.data.data)) //store user data in appStore
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
