@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("Dikshya@123");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState();
 
   const handleLogin = async () => {
     try {
@@ -26,6 +27,7 @@ const Login = () => {
       dispatch(addUser(res.data.data)) //store user data in appStore
       navigate("/feed");
     } catch (err) {
+      setError(err.response?.data || "Something went Wrong")
       console.error(err);
     }
   };
@@ -72,6 +74,8 @@ const Login = () => {
               required
             />
           </fieldset>
+
+          <p className="text-red-600">{error}</p>
 
           <button className="btn btn-primary w-full rounded-xl mt-2" onClick={handleLogin}>
             Login →
