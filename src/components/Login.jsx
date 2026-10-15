@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-base-200 via-base-100 to-primary/20 px-4 py-16">
+    <div className="flex justify-center items-center min-h-[calc(100vh-64px)] bg-gradient-to-br from-base-200 via-base-100 to-primary/20 px-4 py-6">
       <div className="card bg-base-100 w-full max-w-sm shadow-2xl border border-base-300/50 rounded-3xl">
         <div className="card-body p-6 gap-3">
 

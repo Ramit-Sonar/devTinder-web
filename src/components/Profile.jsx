@@ -1,4 +1,4 @@
-const Signup = () => {
+const Profile = () => {
   return (
     <div style={{ paddingTop: "100px", color: "red" }}>
       <h1>This is the profile page</h1>
@@ -6,4 +6,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Profile;

@@ -1,6 +1,6 @@
 const Signup = () => {
   return (
-    <div style={{ paddingTop: "100px", color: "red" }}>
+    <div>
       <h1>This is the signup page</h1>
     </div>
   );
