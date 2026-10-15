@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../utils/userSlice";
+import { useNavigate } from "react-router";
 
 const NavBar = () => {
     const user = useSelector((store) => store.user);
     console.log(user)
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
@@ -16,10 +19,11 @@ const NavBar = () => {
             );
 
             dispatch(removeUser());
+            navigate("/login", { replace: true });
         } catch (err) {
-            console.error(err);
+            console.error("Logout failed:", err);
         }
-    };
+    }
 
     return (
         <div className="navbar bg-base-300 shadow-sm fixed top-0 left-0 w-full z-50">
@@ -44,7 +48,7 @@ const NavBar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
                     >
                         <li>
-                            <a className="justify-between">
+                            <a className="justify-between" onClick={() => navigate("/profile")}>
                                 Profile
                                 <span className="badge">New</span>
                             </a>

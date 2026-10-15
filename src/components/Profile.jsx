@@ -1,10 +1,9 @@
-
-const Profile = () => {
+const Signup = () => {
   return (
-    <div>
-      Profile page
+    <div style={{ paddingTop: "100px", color: "red" }}>
+      <h1>This is the profile page</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Signup;

@@ -1,21 +1,20 @@
-import { Outlet, useNavigate } from 'react-router'
-import NavBar from './NavBar'
-import Footer from './Footer'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { addUser } from '../utils/userSlice'
-import { useEffect } from 'react'
+import { Outlet } from "react-router";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useEffect, useState } from "react";
 
 const Body = () => {
-
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const userData = useSelector((store) => store.user);
 
+    const [authChecked, setAuthChecked] = useState(
+        () => Boolean(userData)
+    );
+
     useEffect(() => {
-
-        if (userData) return; // User data already exists; skip API call
-
         const fetchUser = async () => {
             try {
                 const res = await axios.get(
@@ -27,26 +26,26 @@ const Body = () => {
 
                 dispatch(addUser(res.data));
             } catch (err) {
-                if (err.response?.status === 401) {
-                    navigate("/login", { replace: true });
-                } else {
+                if (err.response?.status !== 401) {
                     console.error("Failed to fetch user:", err);
                 }
+            } finally {
+                setAuthChecked(true);
             }
         };
 
-        fetchUser();
-    }, [userData, dispatch, navigate]);
-
+        if (!userData) {
+            fetchUser();
+        }
+    }, [dispatch, userData]);
 
     return (
         <div>
             <NavBar />
-            {/* Child route components render here */}
-            <Outlet />
+            <Outlet context={{ authChecked }} />
             <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default Body
+export default Body;
