@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/feedSlice.js";
+import UserCard from "./UserCard.jsx";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -27,15 +28,12 @@ const Feed = () => {
   }, [dispatch, feed])
 
   return (
-    <div>
-      <h1>DevTinder Feed</h1>
-
-      {feed?.map((user) => (
-        <div key={user._id}>
-          <h2>{user.firstName} {user.lastName}</h2>
-          <p>{user.about}</p>
-        </div>
-      ))}
+    <div className="flex justify-center px-4 py-6">
+      {feed.length > 0 ? (
+        <UserCard user={feed[0]} />
+      ) : (
+        <p>No users available in your feed.</p>
+      )}
     </div>
   );
 };
