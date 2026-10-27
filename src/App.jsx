@@ -9,6 +9,7 @@ import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import Connections from "./components/connections";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path="feed" element={<Feed />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="connections" element={<Connections />} />
+              <Route path="requests" element={<Profile />} />
             </Route>
           </Route>
         </Routes>
