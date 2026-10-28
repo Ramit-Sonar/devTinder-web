@@ -139,7 +139,7 @@ const Connections = () => {
 
 
     return (
-        <main className="min-h-screen bg-base-200 px-4 pt-8 pb-24 sm:px-8 sm:pb-28">
+        <main className="min-h-screen bg-base-300 px-4 pt-8 pb-24 sm:px-8 sm:pb-28">
             <div className="mx-auto max-w-5xl">
 
                 {/* Page Heading */}
